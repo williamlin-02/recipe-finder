@@ -1,16 +1,12 @@
 from flask import Flask
 from dotenv import dotenv_values
 from pprint import pprint
-from pymongo import MongoClient
+from flask_pymongo import PyMongo
 config = dotenv_values(".env")
 
-
-MONGO_URI = config['MONGO_URI']
 app = Flask(__name__)
-client = MongoClient(MONGO_URI, connect=False)
-db=client.admin
-serverStatusResult=db.command("serverStatus")
-pprint(serverStatusResult)
+app.config["MONGO_URI"] = config['MONGO_URI']
+mongo = PyMongo(app)
 
 @app.route("/members")
 def members():
