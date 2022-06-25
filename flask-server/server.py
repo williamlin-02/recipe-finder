@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_pymongo import PyMongo
 from dotenv import dotenv_values
 from pprint import pprint
 from pymongo import MongoClient
