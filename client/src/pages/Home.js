@@ -1,4 +1,22 @@
+import { useState } from 'react';
+
+async function filterRecipes(params){
+	return fetch('/127.0.0.1:5000/recipe/filter',{
+		method: 'GET',
+		headers: {
+		     'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(params)
+	}).then(data => data.json())
+}
+
 const Home = () =>{
+	const [search_input, setSearchInput] = useState('')
+
+	const handleSubmit = async e => {
+		e.preventDefault();
+
+	}
 
 	return(
 	<div class="s013">
